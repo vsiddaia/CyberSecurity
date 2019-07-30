@@ -15,8 +15,7 @@ Good luck!
 3. Inside your **02-Terminal_Challenge** folder, include two subfolders, one for each of the assignments.
 
 ## Challenge 1: Picture Tracker
-
-![Images/03-Images.jpg](Images/03-Images.jpg)
+![alt text](https://github.com/vittalsiddaiah/CyberSecurity/tree/master/Homework_02/03-Images.jpg)
 
 In this challenge, you've been given a zipped file (Pictures.zip) filled with folders of images. Your job is to create a shell script to complete the following:
 
@@ -114,8 +113,7 @@ Your final submission should come in the form of:
 
 ## Challenge 2: VIP Customers
 
-![Images/01-VIP.jpg](Images/01-VIP.jpg)
-
+![alt text](https://github.com/vittalsiddaiah/CyberSecurity/tree/master/Homework_02/01-VIP.jpg)
 In this challenge, you are given a zip file (OrderRecords.zip) filled with Order and Inventory Records from 2012–2017. Your task is to create and run a shell script to complete the following:
 
 1. Create a folder called **AllRecords**. 
@@ -180,9 +178,7 @@ Michael Campbell has 1  Record(s)
 
 
 ## Challenge 3: To-Do Counter
-
-![Images/02-Todo.jpg](Images/02-Todo.jpg)
-
+![alt text](https://github.com/vittalsiddaiah/CyberSecurity/tree/master/Homework_02/02-Todo.jpg)
 In this challenge, you've been given zip file (Todos.zip) that includes a set of folders related to three coworkers' to-do lists. Each coworker's to dos are included in their respective folder. Your job is to create a shell script to complete the following:
 
 1. Within each of the folders, create an **all.txt** file that combines the to dos included in the individual's to-do lists.
