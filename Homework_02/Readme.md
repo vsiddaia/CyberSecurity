@@ -14,8 +14,7 @@ Good luck!
 
 3. Inside your **02-Terminal_Challenge** folder, include two subfolders, one for each of the assignments.
 
-## Challenge 1: Picture Tracker
-![alt text](https://github.com/vittalsiddaiah/CyberSecurity/tree/master/Homework_02/03-Images.jpg)
+## Challenge 1: Picture Tracker![alt text](https://github.com/vittalsiddaiah/CyberSecurity/blob/master/Homework_02/03-Images.jpg)
 
 In this challenge, you've been given a zipped file (Pictures.zip) filled with folders of images. Your job is to create a shell script to complete the following:
 
