@@ -21,7 +21,7 @@ In this challenge, you've been given a zipped file (Pictures.zip) filled with fo
 * Create three folders called: **JPG**, **PNG**, **TIFF**.
 * Locate all **.jpg**, **.png**, and **.tiff** files inside the folder and copy each into their respective folder. 
 
-### ++**Solution library :**++ **verifyFileCount**
+#### **Solution library :** **verifyFileCount**
 > Ensure to change to executable mode : ``` chmod +x verifyFileCount ```
 
 ```shell
@@ -52,7 +52,7 @@ fi
 
 
 
-### ++**Solution:**++ **hw2_challenge1.sh**
+#### **Solution:** **hw2_challenge1.sh**
 > Ensure to change to executable mode : ``` chmod +x hw2_challenge1.sh ```
 ```shell
 #!/bin/bash
@@ -93,7 +93,7 @@ printf " $SEP" | tee -a PictureCounts.md
 * Create a new file called **PictureCounts.md**.
 * Count how many times each file type occurs and log the results to the **PictureCounts.md** file. 
 
-### ++**Output File:**++
+#### **Output File:**
 
 ``` shell
 cat ./PictureCounts.md 
@@ -152,7 +152,7 @@ Your final submission should come in the form of:
 * A shell script (**.sh** file) with each of the commands. Add a comment above each command describing the action.  
 
 
-### ++**Solution:**++ **hw2_challenge2.sh**
+#### **Solution:** **hw2_challenge2.sh**
 > Ensure to change to executable mode : ``` chmod +x hw2_challenge2.sh ```
 ```bash
 #!/bin/bash
@@ -165,7 +165,7 @@ echo "Michael Campbell has" `cat  ./AllRecords/VIPCustomerOrders/michael_campbel
 
 ```
 
-### ++**Output File:**++
+#### **Output File:**
 ```shell
 cat ./VIPCustomerDetails.md 
 Summary
@@ -206,7 +206,7 @@ Your final submission should come in the form of:
 
 * An annotated PDF document with screenshots of each of the commands being run in the command line and the results shown in the file explorer when relevant. 
 
-### ++**Solution:**++ **hw2_challenge3.sh**
+#### **Solution:** **hw2_challenge3.sh**
 > Ensure to change to executable mode : ``` chmod +x hw2_challenge3.sh ```
 ```bash
 #!/bin/bash
@@ -228,7 +228,7 @@ printf "$_doneList\n\n" > ProductivityReport.md
 printf "$_todoList\n" >> ProductivityReport.md 
 ```
 
-### ++**Output File:**++
+#### **Output File:**
 ```shell
 cat ./ProductivityReport.md 
 Done: 
