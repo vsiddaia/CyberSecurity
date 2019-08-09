@@ -28,55 +28,44 @@ Open up the `Unsolved/DNSDictionary.py` file. For each step, accomplish the foll
         ```
 
 > Solution:
-> 
+ 
 ```python
-ipDict = {}
-if(len(providers) == len(ips)):
-    for idx in range(len(ips)):
-        ipDict.update({providers[idx]:ips[idx]})
+        ipDict = {}
+        if(len(providers) == len(ips)):
+            for idx in range(len(ips)):
+                ipDict.update({providers[idx]:ips[idx]})
 ```
 > Output:
 
 ```
-[{'provider_name': 'Level3', 'provider_server': '209.244.0.3'},
- {'provider_name': 'Verisign', 'provider_server': '64.6.64.6'},
- {'provider_name': 'Google', 'provider_server': '8.8.8.8'},
- {'provider_name': 'Quad9', 'provider_server': '9.9.9.9'},
- {'provider_name': 'DNS.WATCH', 'provider_server': '84.200.69.80'},
- {'provider_name': 'Comodo Secure DNS', 'provider_server': '8.26.56.26'},
- {'provider_name': 'OpenDNS Home', 'provider_server': '208.67.222.222'},
- {'provider_name': 'Norton ConnectSafe', 'provider_server': '199.85.126.10'},
- {'provider_name': 'GreenTeamDNS', 'provider_server': '81.218.119.11'},
- {'provider_name': 'SafeDNS', 'provider_server': '195.46.39.39'},
- {'provider_name': 'OpenNIC', 'provider_server': '69.195.152.204'},
- {'provider_name': 'SmartViper', 'provider_server': '208.76.50.50'},
- {'provider_name': 'Dyn', 'provider_server': '216.146.35.35'},
- {'provider_name': 'FreeDNS', 'provider_server': '37.235.1.174'},
- {'provider_name': 'Alternate DNS', 'provider_server': '198.101.242.72'},
- {'provider_name': 'Yandex.DNS', 'provider_server': '77.88.8.8'},
- {'provider_name': 'UncensoredDNS', 'provider_server': '91.239.100.100'},
- {'provider_name': 'Hurricane Electric', 'provider_server': '74.82.42.42'},
- {'provider_name': 'puntCAT', 'provider_server': '109.69.8.51'},
- {'provider_name': 'Neustar', 'provider_server': '156.154.70.1'},
- {'provider_name': 'Cloudflare', 'provider_server': '1.1.1.1'},
- {'provider_name': 'Fourth Estate', 'provider_server': '45.77.165.194'}]
+        [{'provider_name': 'Level3', 'provider_server': '209.244.0.3'},
+         {'provider_name': 'Verisign', 'provider_server': '64.6.64.6'},
+         {'provider_name': 'Google', 'provider_server': '8.8.8.8'},
+         {'provider_name': 'Quad9', 'provider_server': '9.9.9.9'},
+        :
+        :
+         {'provider_name': 'puntCAT', 'provider_server': '109.69.8.51'},
+         {'provider_name': 'Neustar', 'provider_server': '156.154.70.1'},
+         {'provider_name': 'Cloudflare', 'provider_server': '1.1.1.1'},
+         {'provider_name': 'Fourth Estate', 'provider_server': '45.77.165.194'}]
 ```
 
-```   - Print Hurricane Electric's IPs using the dictionary. ```
+
+   - Print Hurricane Electric's IPs using the dictionary.
 
 > Solution:
 
 ```python
-ipDict["Hurricane Electric"]
+        ipDict["Hurricane Electric"]
 ```
 > Output:
 
 ``` 
-'74.82.42.42' 
+        '74.82.42.42' 
 ```
 
 
-1. Use a `for` loop to create a list of dictionaries with the associated information.
+2. Use a `for` loop to create a list of dictionaries with the associated information.
 
    - For example, two entries in the list would look like:
 
@@ -95,46 +84,32 @@ ipDict["Hurricane Electric"]
     > Solution:
 
     ```python
-    ipList=[]
-    for key, value in ipDict.items():
-        ipList.append({'provider_name': key, 'provider_server': value})
-    ipList
+        ipList=[]
+        for key, value in ipDict.items():
+            ipList.append({'provider_name': key, 'provider_server': value})
+        ipList
     ```
     > Output:
     ```
-    [{'provider_name': 'Level3', 'provider_server': '209.244.0.3'},
-    {'provider_name': 'Verisign', 'provider_server': '64.6.64.6'},
-    {'provider_name': 'Google', 'provider_server': '8.8.8.8'},
-    {'provider_name': 'Quad9', 'provider_server': '9.9.9.9'},
-    {'provider_name': 'DNS.WATCH', 'provider_server': '84.200.69.80'},
-    {'provider_name': 'Comodo Secure DNS', 'provider_server': '8.26.56.26'},
-    {'provider_name': 'OpenDNS Home', 'provider_server': '208.67.222.222'},
-    {'provider_name': 'Norton ConnectSafe', 'provider_server': '199.85.126.10'},
-    {'provider_name': 'GreenTeamDNS', 'provider_server': '81.218.119.11'},
-    {'provider_name': 'SafeDNS', 'provider_server': '195.46.39.39'},
-    {'provider_name': 'OpenNIC', 'provider_server': '69.195.152.204'},
-    {'provider_name': 'SmartViper', 'provider_server': '208.76.50.50'},
-    {'provider_name': 'Dyn', 'provider_server': '216.146.35.35'},
-    {'provider_name': 'FreeDNS', 'provider_server': '37.235.1.174'},
-    {'provider_name': 'Alternate DNS', 'provider_server': '198.101.242.72'},
-    {'provider_name': 'Yandex.DNS', 'provider_server': '77.88.8.8'},
-    {'provider_name': 'UncensoredDNS', 'provider_server': '91.239.100.100'},
-    {'provider_name': 'Hurricane Electric', 'provider_server': '74.82.42.42'},
-    {'provider_name': 'puntCAT', 'provider_server': '109.69.8.51'},
-    {'provider_name': 'Neustar', 'provider_server': '156.154.70.1'},
-    {'provider_name': 'Cloudflare', 'provider_server': '1.1.1.1'},
-    {'provider_name': 'Fourth Estate', 'provider_server': '45.77.165.194'}]
+        [{'provider_name': 'Level3', 'provider_server': '209.244.0.3'},
+        {'provider_name': 'Verisign', 'provider_server': '64.6.64.6'},
+        {'provider_name': 'Google', 'provider_server': '8.8.8.8'},
+        :
+        :
+        {'provider_name': 'Cloudflare', 'provider_server': '1.1.1.1'},
+        {'provider_name': 'Fourth Estate', 'provider_server': '45.77.165.194'}]
     ```
+   
    - Print the total number of providers using the list.
 
 > Solution:
 
 ```python
-print("Total Number of Providers : %d" % len(ipList))
+        print("Total Number of Providers : %d" % len(ipList))
 ```
 > Output:
 ```
-Total Number of Providers : 22
+        Total Number of Providers : 22
 ```
 
 ### Bonuses
@@ -149,10 +124,36 @@ Total Number of Providers : 22
             'Verisign': ['64.6.64.6', '64.6.65.6']
         }
         ```
-
    - The IPs should be in the form of an array of IPs.
 
+> Solution:
+
+```python
+        for sip in secondary_ips:
+            ipDict[sip['provider']] = [ipDict[sip['provider']], sip['ip']]
+```
+
+ > Output:
+
+```
+        {'Level3': ['209.244.0.3', '209.244.0.4'],
+         'Verisign': ['64.6.64.6', '64.6.65.6'],
+        :
+         'Cloudflare': ['1.1.1.1', '1.0.0.1'],
+         'Fourth Estate': '45.77.165.194'}
+```
    - Print Google's IPs using the dictionary.
+
+> Solution:
+
+```python
+        ipDict['Google']
+```
+> Output:
+
+```
+        ['8.8.8.8', '8.8.4.4']
+```
 
 2. Use nested `for` loops to update the list from part 2 with a `'secondary_server'` key.
 
