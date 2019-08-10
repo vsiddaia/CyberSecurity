@@ -185,23 +185,23 @@ pp.pprint(ipDict)
 > Output:
 
 ```
-[{'provider_name': 'Level3',
-  'provider_server': '209.244.0.3'},
- {'provider_name': 'Verisign',
-  'provider_server': '64.6.64.6'},
- {'provider_name': 'Google',
-  'provider_server': '8.8.8.8'},
-  :
-  :
-  {'provider_name': 'Fourth Estate',
-  'provider_server': '45.77.165.194'}]
+        [{'provider_name': 'Level3',
+          'provider_server': '209.244.0.3'},
+         {'provider_name': 'Verisign',
+          'provider_server': '64.6.64.6'},
+         {'provider_name': 'Google',
+          'provider_server': '8.8.8.8'},
+          :
+          :
+          {'provider_name': 'Fourth Estate',
+          'provider_server': '45.77.165.194'}]
 
- {'Alternate DNS': '198.101.242.72',
- 'Cloudflare': '1.1.1.1',
- :
- :
- 'Yandex.DNS': '77.88.8.8',
- 'puntCAT': '109.69.8.51'} 
+         {'Alternate DNS': '198.101.242.72',
+         'Cloudflare': '1.1.1.1',
+         :
+         :
+         'Yandex.DNS': '77.88.8.8',
+         'puntCAT': '109.69.8.51'} 
 ```
 
 ---
@@ -215,6 +215,36 @@ In this activity, you'll use Python to build a login system for a WiFi router th
 ### Instructions
 
 1. Open up `Unsolved/UserAdmin.py`.
+
+> Solution:
+```python
+        allChars = string.ascii_letters + string.digits + string.punctuation
+        userInfo = []
+        for x in range(10):
+            passwd = ''
+            for y in range(10): passwd += secrets.choice(allChars)
+            userInfo.append({"username": "User_" + str(x), "password": passwd} )
+        userInfo.append(adminList[0])
+        userInfo.append(adminList[1])
+        userInfo
+``` 
+
+> Output:
+
+```
+        [{'username': 'User_0', 'password': '7FEbQ#4$5l'},
+         {'username': 'User_1', 'password': '=m|va$V^y$'},
+         {'username': 'User_2', 'password': '\\>D=|#3ag?'},
+         {'username': 'User_3', 'password': "`AK'U$xU[x"},
+         {'username': 'User_4', 'password': "a'HGf\\jmp+"},
+         {'username': 'User_5', 'password': 'RNt<Oh-~"~'},
+         {'username': 'User_6', 'password': 'xCfHSG4.t+'},
+         {'username': 'User_7', 'password': 'TO:m"jA>AD'},
+         {'username': 'User_8', 'password': ')qZ}L#X{.L'},
+         {'username': 'User_9', 'password': 'RH3^.#@JYj'},
+         {'username': 'DaBigBoss', 'password': 'DaBest'},
+         {'username': 'root', 'password': 'toor'}]
+```
 
 2. Create a function named `getCreds` with no parameters that will prompt the user for their username and password. This function should return a dictionary called `userInfo` that looks like the dictionaries below:
 
@@ -232,9 +262,120 @@ adminList = [
 ]
 ```
 
+> Solution:
+```python
+    import pprint
+    def getCreds():
+        pprint.pprint(userInfo)
+    getCreds()
+``` 
+
+> Output:
+
+```
+        [{'password': '7FEbQ#4$5l', 'username': 'User_0'},
+         {'password': '=m|va$V^y$', 'username': 'User_1'},
+         {'password': '\\>D=|#3ag?', 'username': 'User_2'},
+         {'password': "`AK'U$xU[x", 'username': 'User_3'},
+         {'password': "a'HGf\\jmp+", 'username': 'User_4'},
+         {'password': 'RNt<Oh-~"~', 'username': 'User_5'},
+         {'password': 'xCfHSG4.t+', 'username': 'User_6'},
+         {'password': 'TO:m"jA>AD', 'username': 'User_7'},
+         {'password': ')qZ}L#X{.L', 'username': 'User_8'},
+         {'password': 'RH3^.#@JYj', 'username': 'User_9'},
+         {'password': 'DaBest', 'username': 'DaBigBoss'},
+         {'password': 'toor', 'username': 'root'}]
+```
+
+
 3. Create a function named `checkLogin` with two parameters: the `userInfo` and the `adminList`. The function should check the credentials to see if they are contained within the admin list of logins. The function should set a variable `loggedIn` to `True` if the credentials are found in the admin list, and set the variable to `False` otherwise.
 
 Now that we know how to check to see if a user is logging in with admin credentials, let's set up the part of the system that will continue to prompt the user for their username and password if they didn't enter correct admin credentials before. 
+
+
+> Solution:
+```python
+        import secrets, string, pprint, getpass
+        def SetDataSet():
+            allChars = string.ascii_letters + string.digits + string.punctuation
+            userInfo = []
+            for x in range(10):
+                passwd = ''
+                for y in range(10): passwd += secrets.choice(allChars)
+                userInfo.append({"username": "User_" + str(x), "password": passwd})
+
+            adminList = [
+                {
+                    "username": "DaBigBoss",
+                    "password": "DaBest"
+                },
+                {
+                    "username": "root",
+                    "password": "toor"
+                }
+            ]
+            userInfo.append(adminList[0])
+            userInfo.append(adminList[1])
+            return [userInfo, adminList]
+
+        def getCreds():
+            uname = input("username : ")
+            maxTrial = 3
+            trial = 0
+            isLoginSuccessful = False
+            while trial < maxTrial:
+                pswd = getpass.getpass()
+                isOk = False
+                for user in userInfo:
+                    if (user["username"].upper() == uname.upper()) and (user["password"] == pswd.strip()):
+                        pprint.pprint(userInfo)
+                        isOk = True;
+                        break
+                if not isOk:
+                    print("Incorrect password !!!, Please try again ...")
+                    trial += 1
+                else:
+                    isLoginSuccessful = True
+                    break
+            if not isLoginSuccessful:
+                print("Sorry max'd out on trials please try after some time.")
+            else:
+                print("Login Successful...")
+
+        [userInfo, adminList] = SetDataSet()
+        getCreds()
+``` 
+
+> Output:
+
+```
+    username : root
+    Password: 
+    [{'password': 'ke34BOkSq&', 'username': 'User_0'},
+     {'password': '7x-O?lG*&R', 'username': 'User_1'},
+     {'password': '`P/|zQ!p,Q', 'username': 'User_2'},
+     {'password': '~rDfedS6j(', 'username': 'User_3'},
+     {'password': ',5$"CrL=~@', 'username': 'User_4'},
+     {'password': 'lG\\:g)3a2]', 'username': 'User_5'},
+     {'password': 'scw;Oo1.(Q', 'username': 'User_6'},
+     {'password': '!~5%9?^c(N', 'username': 'User_7'},
+     {'password': '\\(X(Q[COg|', 'username': 'User_8'},
+     {'password': '#2dK2}qSM"', 'username': 'User_9'},
+     {'password': 'DaBest', 'username': 'DaBigBoss'},
+     {'password': 'toor', 'username': 'root'}]
+    Login Successful...
+
+
+        username : root
+        Password: 
+        Incorrect password !!!, Please try again ...
+        Password: 
+        Incorrect password !!!, Please try again ...
+        Password: 
+        Incorrect password !!!, Please try again ...
+        Sorry max'd out on trials please try after some time.
+
+```
 
 4. Create a `while` loop that will continue to call `getCreds` and `checkLogin` until a user logs in with admin credentials. 
 
