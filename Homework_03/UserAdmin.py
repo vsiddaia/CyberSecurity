@@ -1,12 +1,14 @@
-import secrets
-import string
 import pprint
+import string
+import secrets
 import getpass
 
 
-def set_dataset():
-    ''' set_dataset() takes no input arguments and returns two
-
+def set_dataset(self):
+    '''
+    function to initialize the data set
+    Returns userInfo and adminList
+    -------
     '''
     allChars = string.ascii_letters + string.digits + string.punctuation
     userInfo = []
@@ -14,7 +16,6 @@ def set_dataset():
         passwd = ''
         for y in range(10): passwd += secrets.choice(allChars)
         userInfo.append({"username": "User_" + str(x), "password": passwd})
-
     adminList = [
         {
             "username": "DaBigBoss",
@@ -29,32 +30,31 @@ def set_dataset():
     userInfo.append(adminList[1])
     return [userInfo, adminList]
 
-def getCreds():
+
+def getCreds(self):
     uname = input("username : ")
     maxTrial = 3
     trial = 0
-    isLoginSuccessful = False
+    is_login_successful = False
     while trial < maxTrial:
         pswd = getpass.getpass()
-        isOk = False
+        is_ok = False
         for user in userInfo:
             if (user["username"].upper() == uname.upper()) and (user["password"] == pswd.strip()):
-
-                isOk = True;
+                pprint.pprint(userInfo)
+                is_ok = True;
                 break
-        if not isOk:
+        if not is_ok:
             print("Incorrect password !!!, Please try again ...")
             trial += 1
         else:
-            isLoginSuccessful = True
+            is_login_successful = True
             break
-    if not isLoginSuccessful:
+    if not is_login_successful:
         print("Sorry max'd out on trials please try after some time.")
     else:
         print("Login Successful...")
-        pprint.pprint(userInfo)
 
 
 [userInfo, adminList] = set_dataset()
-
 getCreds()
