@@ -303,11 +303,6 @@ adminList = [
             print("Sorry max'd out on trials please try after some time.")
         else:
             print("Login Successful...")
-
-
-    [userInfo, adminList] = set_dataset()
-    getCreds()
-
 ```
 
 
@@ -341,7 +336,7 @@ Now that we know how to check to see if a user is logging in with admin credenti
     import secrets
     import getpass
 
-    
+
     def getCreds(self):
         uname = input("username : ")
         maxTrial = 3
