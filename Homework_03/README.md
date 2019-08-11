@@ -279,36 +279,37 @@ adminList = [
 ```
 
 > Solution:
-    ```python
-        def getCreds(self):
-            uname = input("username : ")
-            maxTrial = 3
-            trial = 0
-            is_login_successful = False
-            while trial < maxTrial:
-                pswd = getpass.getpass()
-                isOk = False
-                for user in userInfo:
-                    if (user["username"].upper() == uname.upper()) and (user["password"] == pswd.strip()):
-                        pprint.pprint(userInfo)
-                        isOk = True;
-                        break
-                if not isOk:
-                    print("Incorrect password !!!, Please try again ...")
-                    trial += 1
-                else:
-                    is_login_successful = True
+```python
+    def getCreds(self):
+        uname = input("username : ")
+        maxTrial = 3
+        trial = 0
+        is_login_successful = False
+        while trial < maxTrial:
+            pswd = getpass.getpass()
+            is_ok = False
+            for user in userInfo:
+                if (user["username"].upper() == uname.upper()) and (user["password"] == pswd.strip()):
+                    pprint.pprint(userInfo)
+                    is_ok = True;
                     break
-            if not is_login_successful:
-                print("Sorry max'd out on trials please try after some time.")
+            if not is_ok:
+                print("Incorrect password !!!, Please try again ...")
+                trial += 1
             else:
-                print("Login Successful...")
+                is_login_successful = True
+                break
+        if not is_login_successful:
+            print("Sorry max'd out on trials please try after some time.")
+        else:
+            print("Login Successful...")
 
 
-        [userInfo, adminList] = set_dataset()
-        getCreds()
+    [userInfo, adminList] = set_dataset()
+    getCreds()
 
-    ``` 
+```
+
 
 > Output:
 
@@ -386,7 +387,7 @@ Now that we know how to check to see if a user is logging in with admin credenti
         getCreds()
 ``` 
 
-> Output:
+> Output:[Successful Password]
 
 ```
     username : root
@@ -404,8 +405,10 @@ Now that we know how to check to see if a user is logging in with admin credenti
      {'password': 'DaBest', 'username': 'DaBigBoss'},
      {'password': 'toor', 'username': 'root'}]
     Login Successful...
+```
 
-
+> Output:[Un-Successful Password]
+```
         username : root
         Password: 
         Incorrect password !!!, Please try again ...
