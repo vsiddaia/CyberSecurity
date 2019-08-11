@@ -5,10 +5,6 @@ import getpass
 
 
 def set_dataset():
-
-
-
-
     ''' set_dataset() takes no input arguments and returns two
 
     '''
@@ -43,7 +39,7 @@ def getCreds():
         isOk = False
         for user in userInfo:
             if (user["username"].upper() == uname.upper()) and (user["password"] == pswd.strip()):
-                pprint.pprint(userInfo)
+
                 isOk = True;
                 break
         if not isOk:
@@ -56,6 +52,7 @@ def getCreds():
         print("Sorry max'd out on trials please try after some time.")
     else:
         print("Login Successful...")
+        pprint.pprint(userInfo)
 
 
 [userInfo, adminList] = set_dataset()
