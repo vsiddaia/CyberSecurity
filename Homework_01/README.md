@@ -21,6 +21,13 @@ Welcome to your future career as a cybersecurity professional. In this homework 
 
 In this section of the assignment, you'll use independent research to define key terms found in the Security Reports. Then, you will use the [reports](resources/reports) themselves to communicate the significance of these key terms in their relative context. When communicating their context, you should offer a relevant factoid, case study, or explanation of their relevance in the report.
 
+> Solution
+<object data="https://github.com/vittalsiddaiah/CyberSecurity/blob/master/Homework_01/01-Cyber-Report/CybersecurityThreatVocabularyReport.pdf" type="application/pdf" width="700px" height="700px">
+    <embed src="http://yoursite.com/the.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="https://github.com/vittalsiddaiah/CyberSecurity/blob/master/Homework_01/01-Cyber-Report/CybersecurityThreatVocabularyReport.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
+
 ## Part II: Report Analysis
 
 In this section of the assignment, you'll use each of the provided reports to answer a variety of questions relevant to current security landscape. For each question try to be detailed but succinct. Offer enough information to demonstrate your understanding of the subject, but keep your responses within a few bullets or sentences.
