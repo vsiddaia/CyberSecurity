@@ -2,6 +2,21 @@
 
 In this exercise, you will use Python to complete four practical challenges:
 * Creating 24 directories for each week of class, each containing 3 folders for each day of class
+
+* Copying files from `~/Downloads` into the current directory
+* Adding the copy script to the PATH
+* Add an alias for the copy script to `~/.bashrc`
+
+---
+
+## Class Notes Folder
+
+Create a script called `create_notes_drs.py`. In the file, define and call a function called `main` that does the following:
+
+* Creates a directory called `CyberSecurity-Notes` in the current working directory
+* Within the `CyberSecurity-Notes` directory, creates 24 sub-directories (sub-folders), called `Week 1`, `Week 2`, `Week 3`, and so on until up through `Week 24`
+* Within each week directory, create 3 sub-directories, called `Day 1`, `Day 2`, and `Day 3`
+
 > Solution:
 ```python
     import os
@@ -47,20 +62,6 @@ In this exercise, you will use Python to complete four practical challenges:
         └── Day_3
 ```
 
-* Copying files from `~/Downloads` into the current directory
-* Adding the copy script to the PATH
-* Add an alias for the copy script to `~/.bashrc`
-
----
-
-## Class Notes Folder
-
-Create a script called `create_notes_drs.py`. In the file, define and call a function called `main` that does the following:
-
-* Creates a directory called `CyberSecurity-Notes` in the current working directory
-* Within the `CyberSecurity-Notes` directory, creates 24 sub-directories (sub-folders), called `Week 1`, `Week 2`, `Week 3`, and so on until up through `Week 24`
-* Within each week directory, create 3 sub-directories, called `Day 1`, `Day 2`, and `Day 3`
-
 **Bonus Challenge**: Add a conditional statement to abort the script if the directory `CyberSecurity-Notes` already exists.
 
 ---
@@ -87,7 +88,31 @@ Students will create a script that does the following:
 * Copies these files into the current working directory
 
 **Note**: This is another practical script you can use to move downloaded slides from class into your class notes directories.
-
+```python
+    import os
+    import glob
+    import shutil
+    
+    
+    def pptx_copy(src_directory=".", dst_directory="."):
+        counter = 0
+        for src_file in glob.glob(src_directory + os.sep + '**/*.ppt*', recursive=True):
+            dst_file = dst_directory + os.sep + os.path.basename(src_file)
+            try:
+                shutil.copyfile(src_file, dst_file)
+                counter +=1
+            except shutil.SameFileError:
+                print("Source and Destination are same !!!")
+                break
+            except:
+                print("Un known Error in copying!!!")
+        print(f"{counter} file(s) copied.")
+        return counter
+    
+    
+    if __name__ == "__main__":
+        pptx_copy(r"/Users/XXXXXXXX/Downloads", r"./CyberSecurity-Notes")
+```
 ---
 
 ## Updating PATH and Add an Alias
