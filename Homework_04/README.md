@@ -182,6 +182,11 @@ export PATH=$PATH:/usr/local/bin
     * `alias copy_activities="copy_activities.py"`
     * `alias copy_slides="copy_slides.py"`
     * `alias create_notes_drs="create_notes_drs.py"`
-
+> Solution:
+```bash
+    alias create_notes_drs=~/UT_CyberSecurity/Homework/GIT/CyberSecurity/Homework_04/create_notes_drs.py
+    alias copy_slides=~/UT_CyberSecurity/Homework/GIT/CyberSecurity/Homework_04/copy_slides.py
+    alias copy_notes=~/UT_CyberSecurity/Homework/GIT/CyberSecurity/Homework_04/copy_notes.py
+```
 ## Submission
 Please submit `create_notes_drs.py`, `copy_slides.py`, and `copy_notes.py`.
