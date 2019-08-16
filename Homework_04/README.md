@@ -2,6 +2,7 @@
 
 In this exercise, you will use Python to complete four practical challenges:
 * Creating 24 directories for each week of class, each containing 3 folders for each day of class
+> Solution:
 ```python
     import os
     import errno
@@ -30,7 +31,21 @@ In this exercise, you will use Python to complete four practical challenges:
                 create_folder(dir_path)
 
 ```
-
+> Output:
+```python
+    tree ./CyberSecurity-Notes/
+    ./CyberSecurity-Notes/
+    ├── Week_01
+    │   ├── Day_1
+    │   ├── Day_2
+    │   └── Day_3
+    :
+    :
+    └── Week_24
+        ├── Day_1
+        ├── Day_2
+        └── Day_3
+```
 
 * Copying files from `~/Downloads` into the current directory
 * Adding the copy script to the PATH
