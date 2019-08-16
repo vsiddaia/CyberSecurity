@@ -20,5 +20,5 @@ def pptx_copy(src_directory=".", dst_directory="."):
 
 
 if __name__ == "__main__":
-    #pptx_copy(r"/Users/vsiddaia/Downloads/", r"./CyberSecurity-Notes")
-    pptx_copy(r"/Users/vsiddaia/Downloads/", r"/Users/vsiddaia/Downloads/")
+    pptx_copy(r"/Users/vsiddaia/Downloads/", r"./CyberSecurity-Notes")
+    #pptx_copy(r"/Users/vsiddaia/Downloads/", r"/Users/vsiddaia/Downloads/")

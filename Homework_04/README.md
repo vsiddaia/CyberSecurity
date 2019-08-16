@@ -88,6 +88,9 @@ Students will create a script that does the following:
 * Copies these files into the current working directory
 
 **Note**: This is another practical script you can use to move downloaded slides from class into your class notes directories.
+
+> Solution:
+
 ```python
     import os
     import glob
@@ -112,6 +115,17 @@ Students will create a script that does the following:
     
     if __name__ == "__main__":
         pptx_copy(r"/Users/XXXXXXXX/Downloads", r"./CyberSecurity-Notes")
+```
+
+> Output On Success:
+```
+15 file(s) copied.
+```
+
+> Output On Success:
+```
+Source and Destination are same !!!
+0 file(s) copied.
 ```
 ---
 
