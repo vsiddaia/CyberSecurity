@@ -44,7 +44,45 @@ Create a script called `create_notes_drs.py`. In the file, define and call a fun
                 dir_path = base_directory + os.sep + 'CyberSecurity-Notes' + os.sep + 'Week_{:02d}'.format(week) + os.sep + \
                            'Day_{:d}'.format(day)
                 create_folder(dir_path)
+import os
+import errno
 
+
+def folder_structure(base_directory="."):
+    """
+    function folder_structure would have the following functionality:
+    * Creates a directory called `CyberSecurity-Notes` in the current working directory
+    * Within the `CyberSecurity-Notes` directory, creates 24 sub-directories (sub-folders), called `Week 1`, `Week 2`, `Week 3`, and so on until up through `Week 24`
+    * Within each week directory, create 3 sub-directories, called `Day 1`, `Day 2`, and `Day 3`
+    :param base_directory: input parameter is not specified would create a folder structure in the same directory
+    :type base_directory: path/raw string
+    :return: None
+    :rtype: None
+    """
+    def create_folder(directory):
+        try:
+            os.makedirs(directory)
+            return True
+        except OSError as error_id:
+            if errno.EEXIST == error_id.errno:
+                return True
+            elif errno.EPERM == error_id.errno:
+                print(f"Error in creating directory, {directory} permission denied !!! ")
+            else:
+                print(type(error_id))
+                print(f"Error in creating directory, {directory} please verify !!! ")
+        return False
+
+    for week in range(1, 25):
+        for day in range(1, 4):
+            # print(dir_path)
+            dir_path = base_directory + os.sep + 'CyberSecurity-Notes' + os.sep + 'Week_{:02d}'.format(week) + os.sep + \
+                       'Day_{:d}'.format(day)
+            create_folder(dir_path)
+
+
+if __name__ == "__main__":
+    folder_structure()
 ```
 > Output:
 ```python
@@ -84,6 +122,18 @@ import shutil
 
 
 def stu_activities(src_directory, dst_directory):
+    """
+    function stu_activities is to perform the following activities:
+    * Finds files in ~/Downloads that contain the string Stu_
+    * Copies these files into the current working directory
+
+    :param src_directory: Source Directory
+    :type src_directory:  Raw String
+    :param dst_directory: Destination Directory
+    :type dst_directory: Raw String
+    :return: Number of files copied
+    :rtype: int
+    """
     def copy_file(src_directory=".", dst_directory="."):
         counter = 0
         for src_file in glob.glob(src_directory + os.sep + '*', recursive=True):
@@ -104,10 +154,11 @@ def stu_activities(src_directory, dst_directory):
             file_counter += copy_file(file, dst_directory)
 
     print(f"{file_counter} file(s) copied.")
+    return file_counter
 
 
 if __name__ == "__main__":
-    stu_activities(r"/Users/XXXXXXXX/Downloads", r"./CyberSecurity-Notes")
+    stu_activities(r"/Users/vsiddaia/Downloads/", r"./CyberSecurity-Notes")
 ```
 ---
 
@@ -124,29 +175,39 @@ Students will create a script that does the following:
 > Solution:
 
 ```python
-    import os
-    import glob
-    import shutil
-    
-    
-    def pptx_copy(src_directory=".", dst_directory="."):
-        counter = 0
-        for src_file in glob.glob(src_directory + os.sep + '**/*.ppt*', recursive=True):
-            dst_file = dst_directory + os.sep + os.path.basename(src_file)
-            try:
-                shutil.copyfile(src_file, dst_file)
-                counter +=1
-            except shutil.SameFileError:
-                print("Source and Destination are same !!!")
-                break
-            except:
-                print("Un known Error in copying!!!")
-        print(f"{counter} file(s) copied.")
-        return counter
-    
-    
-    if __name__ == "__main__":
-        pptx_copy(r"/Users/XXXXXXXX/Downloads", r"./CyberSecurity-Notes")
+import os
+import glob
+import shutil
+
+
+def pptx_copy(src_directory=".", dst_directory="."):
+    """
+
+    :param src_directory: Source Directory
+    :type src_directory: raw string/path
+    :param dst_directory: Destination Directory
+    :type dst_directory: raw string/path
+    :return: Number of files copied
+    :rtype: integer
+    """
+    counter = 0
+    for src_file in glob.glob(src_directory + os.sep + '**/*.ppt*', recursive=True):
+        dst_file = dst_directory + os.sep + os.path.basename(src_file)
+        try:
+            shutil.copyfile(src_file, dst_file)
+            counter +=1
+        except shutil.SameFileError:
+            print("Source and Destination are same !!!")
+            break
+        except:
+            print("Un known Error in copying!!!")
+    print(f"{counter} file(s) copied.")
+    return counter
+
+
+if __name__ == "__main__":
+    pptx_copy(r"/Users/vsiddaia/Downloads/", r"./CyberSecurity-Notes")
+
 ```
 
 > Output On Success:

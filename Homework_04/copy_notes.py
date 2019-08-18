@@ -4,6 +4,18 @@ import shutil
 
 
 def stu_activities(src_directory, dst_directory):
+    """
+    function stu_activities is to perform the following activities:
+    * Finds files in ~/Downloads that contain the string Stu_
+    * Copies these files into the current working directory
+
+    :param src_directory: Source Directory
+    :type src_directory:  Raw String
+    :param dst_directory: Destination Directory
+    :type dst_directory: Raw String
+    :return: Number of files copied
+    :rtype: int
+    """
     def copy_file(src_directory=".", dst_directory="."):
         counter = 0
         for src_file in glob.glob(src_directory + os.sep + '*', recursive=True):
@@ -24,8 +36,8 @@ def stu_activities(src_directory, dst_directory):
             file_counter += copy_file(file, dst_directory)
 
     print(f"{file_counter} file(s) copied.")
+    return file_counter
 
 
 if __name__ == "__main__":
     stu_activities(r"/Users/vsiddaia/Downloads/", r"./CyberSecurity-Notes")
-    #pptx_copy(r"/Users/vsiddaia/Downloads/", r"/Users/vsiddaia/Downloads/")
