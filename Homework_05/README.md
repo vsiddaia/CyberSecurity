@@ -46,45 +46,40 @@ Next, you'll generate an RSA keypair through the following steps.
 
 > Solution:
 ```bash
-echo "This is a very good secret and to be kept as secret" > dirty_little_secret
-openssl genrsa -des3 -out private.pem 2048
-ls -atlr
-openssl rsa -in ./private.pem -outform PEM -pubout -out ./public.pem
-ls -altr
+    echo "This is a very good secret and to be kept as secret" > dirty_little_secret.txt
+    openssl genrsa -des3 -out private.pem 2048
+    openssl rsa -in ./private.pem -outform PEM -pubout -out ./public.pem
 ```
 >Typical Output:
 ```bash
-(base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
-🐌 echo "This is a very good secret and to be kept as secret" > dirty_little_secret
-(base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
-🐌 openssl genrsa -des3 -out private.pem 2048
-Generating RSA private key, 2048 bit long modulus (2 primes)
-...+++++
-........................................................................+++++
-e is 65537 (0x010001)
-Enter pass phrase for private.pem:
-Verifying - Enter pass phrase for private.pem:
-(base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
-🐌 ls -atlr
-total 32
--rw-r--r--   1 vsiddaia  staff  7187 Aug 24 10:29 README.md
-drwxr-xr-x  12 vsiddaia  staff   384 Aug 27 18:32 ..
-drwxr-xr-x   5 vsiddaia  staff   160 Aug 28 07:09 .
--rw-r--r--   1 vsiddaia  staff    52 Aug 28 07:09 dirty_little_secret
--rw-------   1 vsiddaia  staff  1751 Aug 28 07:09 private.pem
-(base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
-🐌 openssl rsa -in ./private.pem -outform PEM -pubout -out ./public.pem
-Enter pass phrase for ./private.pem:
-writing RSA key
-(base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
-🐌 ls -altr
-total 40
--rw-r--r--   1 vsiddaia  staff  7187 Aug 24 10:29 README.md
-drwxr-xr-x  12 vsiddaia  staff   384 Aug 27 18:32 ..
--rw-r--r--   1 vsiddaia  staff    52 Aug 28 07:09 dirty_little_secret
--rw-------   1 vsiddaia  staff  1751 Aug 28 07:09 private.pem
-drwxr-xr-x   6 vsiddaia  staff   192 Aug 28 07:10 .
--rw-r--r--   1 vsiddaia  staff   451 Aug 28 07:10 public.pem
+    (base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+    🐌 echo "This is a very good secret and to be kept as secret" > dirty_little_secret.txt
+    (base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+    🐌 openssl genrsa -des3 -out private.pem 2048
+    Generating RSA private key, 2048 bit long modulus (2 primes)
+    ...+++++
+    ........................................................................+++++
+    e is 65537 (0x010001)
+    Enter pass phrase for private.pem:
+    Verifying - Enter pass phrase for private.pem:
+    (base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+    🐌 ls -atlr
+    total 32
+    -rw-r--r--   1 vsiddaia  staff  7187 Aug 24 10:29 README.md
+    drwxr-xr-x  12 vsiddaia  staff   384 Aug 27 18:32 ..
+    drwxr-xr-x   5 vsiddaia  staff   160 Aug 28 07:09 .
+    -rw-r--r--   1 vsiddaia  staff    52 Aug 28 07:09 dirty_little_secret
+    -rw-------   1 vsiddaia  staff  1751 Aug 28 07:09 private.pem
+    (base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+    🐌 openssl rsa -in ./private.pem -outform PEM -pubout -out ./public.pem
+    Enter pass phrase for ./private.pem:
+    writing RSA key
+    (base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+    🐌 ls -1
+    README.md
+    dirty_little_secret.txt
+    private.pem
+    public.pem
 ```
 
 ### Trade Public Keys
@@ -118,6 +113,31 @@ You'll also generate something called an **Initialization Vector**, or IV. This 
   - Create a file called `iv.dat`. Copy and paste the IV from `secrets` into `iv.dat`. As before, _only_ copy the string to the right of the equals sign.
 
 - Take a screenshot of your `symmetrickey.dat` and `iv.dat` files either in your terminal or file finder.
+> Solution:
+```bash
+    openssl enc -aes-256-cbc -nosalt -k password -P | tee secrets |grep key > symmetrickey.dat
+    openssl enc -aes-256-cbc -nosalt -k password -P | tee secrets |grep iv > iv.dat
+```
+
+> Output:
+```bash
+    🐌 openssl enc -aes-256-cbc -nosalt -k password -P | tee secrets |grep key > symmetrickey.dat
+    *** WARNING : deprecated key derivation used.
+    Using -iter or -pbkdf2 would be better.
+    (base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+    🐌 openssl enc -aes-256-cbc -nosalt -k password -P | tee secrets |grep iv > iv.dat
+    *** WARNING : deprecated key derivation used.
+    Using -iter or -pbkdf2 would be better.
+    (base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+    🐌 ls -1
+    README.md
+    dirty_little_secret.txt
+    iv.dat
+    private.pem
+    public.pem
+    secrets
+    symmetrickey.dat
+```
 
 ### Encrypt Your Message
 
@@ -136,7 +156,23 @@ Now that you have a symmetric key, you can use it to encrypt messages!
 - Check to make sure everything went well by running: `cat dirty_little_secret.enc`.
 
 - Take a screenshot of your terminal, including both commands in this section.
-
+> Solution:
+```bash
+openssl enc -nosalt -aes-256-cbc -in dirty_little_secret.txt -out dirty_little_secret.enc -base64 -K 5E884898FA28047757F0E56F8FF6292773603F0F6AABBFF62A77EF727F7542F8  -iv 3B02902846FFF32E92FF768B3F5F76B0
+```
+> Output:
+```bash
+(base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+🐌 ls -1
+README.md
+dirty_little_secret.enc
+dirty_little_secret.txt
+iv.dat
+private.pem
+public.pem
+secrets
+symmetrickey.dat
+```
 
 ### Encrypt Your Symmetric Key
 
