@@ -44,6 +44,49 @@ Next, you'll generate an RSA keypair through the following steps.
 
 - Take a screenshot of your terminal with the commands from above.
 
+> Solution:
+```bash
+echo "This is a very good secret and to be kept as secret" > dirty_little_secret
+openssl genrsa -des3 -out private.pem 2048
+ls -atlr
+openssl rsa -in ./private.pem -outform PEM -pubout -out ./public.pem
+ls -altr
+```
+>Typical Output:
+```bash
+(base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+🐌 echo "This is a very good secret and to be kept as secret" > dirty_little_secret
+(base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+🐌 openssl genrsa -des3 -out private.pem 2048
+Generating RSA private key, 2048 bit long modulus (2 primes)
+...+++++
+........................................................................+++++
+e is 65537 (0x010001)
+Enter pass phrase for private.pem:
+Verifying - Enter pass phrase for private.pem:
+(base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+🐌 ls -atlr
+total 32
+-rw-r--r--   1 vsiddaia  staff  7187 Aug 24 10:29 README.md
+drwxr-xr-x  12 vsiddaia  staff   384 Aug 27 18:32 ..
+drwxr-xr-x   5 vsiddaia  staff   160 Aug 28 07:09 .
+-rw-r--r--   1 vsiddaia  staff    52 Aug 28 07:09 dirty_little_secret
+-rw-------   1 vsiddaia  staff  1751 Aug 28 07:09 private.pem
+(base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+🐌 openssl rsa -in ./private.pem -outform PEM -pubout -out ./public.pem
+Enter pass phrase for ./private.pem:
+writing RSA key
+(base)   ★ [ 🙉  🙈  🙊 ] ★ [~/Workspace/] ★  
+🐌 ls -altr
+total 40
+-rw-r--r--   1 vsiddaia  staff  7187 Aug 24 10:29 README.md
+drwxr-xr-x  12 vsiddaia  staff   384 Aug 27 18:32 ..
+-rw-r--r--   1 vsiddaia  staff    52 Aug 28 07:09 dirty_little_secret
+-rw-------   1 vsiddaia  staff  1751 Aug 28 07:09 private.pem
+drwxr-xr-x   6 vsiddaia  staff   192 Aug 28 07:10 .
+-rw-r--r--   1 vsiddaia  staff   451 Aug 28 07:10 public.pem
+```
+
 ### Trade Public Keys
 
 - Next, send your partner your public key via Slack.
